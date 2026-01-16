@@ -6,7 +6,7 @@
 <title>iOS Style Calculator</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dark">
 
 <div class="container">
     <!-- Mode Toggle -->
@@ -45,13 +45,15 @@
 
 <script>
 const display = document.getElementById("display");
-const container = document.querySelector(".container");
 const modeBtn = document.querySelector(".mode-btn");
+const body = document.body;
 
+// Append value
 function append(value) {
     display.value += value;
 }
 
+// Calculate
 function calculate() {
     try {
         display.value = eval(display.value);
@@ -60,19 +62,23 @@ function calculate() {
     }
 }
 
+// Clear display
 function clearDisplay() {
     display.value = "";
 }
 
+// Toggle sign
 function toggleSign() {
     if(display.value){
         display.value = (parseFloat(display.value) * -1).toString();
     }
 }
 
+// Toggle Light/Dark Mode
 function toggleMode() {
-    container.classList.toggle("light");
-    modeBtn.textContent = container.classList.contains("light") ? "🌙" : "🌞";
+    body.classList.toggle("light");
+    body.classList.toggle("dark");
+    modeBtn.textContent = body.classList.contains("light") ? "🌙" : "🌞";
 }
 
 // Ripple Effect
