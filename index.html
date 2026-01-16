@@ -8,38 +8,45 @@
 </head>
 <body>
 
-<div class="calculator-container">
-    <input type="text" id="display" readonly placeholder="0">
+<div class="container">
+    <!-- Mode Toggle -->
+    <button class="mode-btn" onclick="toggleMode()">🌞</button>
 
-    <div class="buttons">
-        <button class="special" onclick="clearDisplay()">C</button>
-        <button class="special" onclick="toggleSign()">±</button>
-        <button class="special" onclick="append('%')">%</button>
-        <button class="operator" onclick="append('/')">÷</button>
+    <div class="calculator">
+        <input type="text" id="display" readonly placeholder="0">
 
-        <button onclick="append('7')">7</button>
-        <button onclick="append('8')">8</button>
-        <button onclick="append('9')">9</button>
-        <button class="operator" onclick="append('*')">×</button>
+        <div class="buttons">
+            <button class="special" onclick="clearDisplay()">C</button>
+            <button class="special" onclick="toggleSign()">±</button>
+            <button class="special" onclick="append('%')">%</button>
+            <button class="operator" onclick="append('/')">÷</button>
 
-        <button onclick="append('4')">4</button>
-        <button onclick="append('5')">5</button>
-        <button onclick="append('6')">6</button>
-        <button class="operator" onclick="append('-')">−</button>
+            <button onclick="append('7')">7</button>
+            <button onclick="append('8')">8</button>
+            <button onclick="append('9')">9</button>
+            <button class="operator" onclick="append('*')">×</button>
 
-        <button onclick="append('1')">1</button>
-        <button onclick="append('2')">2</button>
-        <button onclick="append('3')">3</button>
-        <button class="operator" onclick="append('+')">+</button>
+            <button onclick="append('4')">4</button>
+            <button onclick="append('5')">5</button>
+            <button onclick="append('6')">6</button>
+            <button class="operator" onclick="append('-')">−</button>
 
-        <button class="zero" onclick="append('0')">0</button>
-        <button onclick="append('.')">.</button>
-        <button class="operator" onclick="calculate()">=</button>
+            <button onclick="append('1')">1</button>
+            <button onclick="append('2')">2</button>
+            <button onclick="append('3')">3</button>
+            <button class="operator" onclick="append('+')">+</button>
+
+            <button class="zero" onclick="append('0')">0</button>
+            <button onclick="append('.')">.</button>
+            <button class="operator" onclick="calculate()">=</button>
+        </div>
     </div>
 </div>
 
 <script>
 const display = document.getElementById("display");
+const container = document.querySelector(".container");
+const modeBtn = document.querySelector(".mode-btn");
 
 function append(value) {
     display.value += value;
@@ -62,6 +69,24 @@ function toggleSign() {
         display.value = (parseFloat(display.value) * -1).toString();
     }
 }
+
+function toggleMode() {
+    container.classList.toggle("light");
+    modeBtn.textContent = container.classList.contains("light") ? "🌙" : "🌞";
+}
+
+// Ripple Effect
+document.querySelectorAll('.buttons button').forEach(button => {
+    button.addEventListener('click', function(e){
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        this.appendChild(ripple);
+        const rect = this.getBoundingClientRect();
+        ripple.style.left = (e.clientX - rect.left) + 'px';
+        ripple.style.top = (e.clientY - rect.top) + 'px';
+        setTimeout(()=>{ ripple.remove(); }, 500);
+    });
+});
 </script>
 
 </body>
