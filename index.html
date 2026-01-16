@@ -4,9 +4,96 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Modern Calculator</title>
-<link rel="stylesheet" href="style.css">
-</head>
+<style>
+*{ box-sizing:border-box; font-family:"Segoe UI",sans-serif; margin:0; padding:0; }
+body{ display:flex; justify-content:center; align-items:center; height:100vh; transition:0.3s; }
+body.dark{ background:#000; color:#fff; }
+body.light{ background:#f2f2f2; color:#000; }
 
+/* Mode Button */
+.mode-btn{
+  position:absolute;
+  top:20px;
+  right:20px;
+  padding:10px;
+  border-radius:50%;
+  border:none;
+  font-size:20px;
+  cursor:pointer;
+}
+
+/* Calculator */
+.calculator{
+  width:320px;
+  padding:20px;
+  border-radius:20px;
+  background:#111;
+}
+body.light .calculator{ background:#fff; }
+
+/* Display */
+#display{
+  width:100%;
+  height:70px;
+  font-size:32px;
+  text-align:right;
+  border:none;
+  outline:none;
+  margin-bottom:15px;
+  padding:10px;
+  border-radius:10px;
+  background:#222;
+  color:#fff;
+}
+body.light #display{ background:#eaeaea; color:#000; }
+
+/* Buttons */
+.buttons{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+button{
+  height:60px;
+  border-radius:50%;
+  border:none;
+  font-size:20px;
+  cursor:pointer;
+  transition:0.1s;
+}
+
+/* Colors */
+button{ background:#333; color:#fff; }
+body.light button{ background:#d6d6d6; color:#000; }
+
+.operator{ background:#ff9f0a; color:#fff; }
+.equal{ background:#0a84ff; }
+.special{ background:#a5a5a5; color:#000; }
+.zero{ grid-column:span 2; border-radius:30px; }
+
+/* Ripple effect */
+button{ position:relative; overflow:hidden; }
+button span.ripple{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(255,255,255,0.5);
+  transform:scale(0);
+  animation:ripple 0.5s linear;
+  pointer-events:none;
+}
+@keyframes ripple{
+  to{ transform:scale(4); opacity:0; }
+}
+
+/* Responsive */
+@media(max-width:400px){
+  .calculator{ width:90%; }
+  #display{ font-size:24px; height:60px; }
+  button{ font-size:18px; height:50px; }
+  .mode-btn{ font-size:18px; padding:8px; }
+}
+</style>
+</head>
 <body class="dark">
 
 <button class="mode-btn" id="modeBtn">🌞</button>
@@ -41,6 +128,43 @@
     </div>
 </div>
 
-<script src="script.js"></script>
+<script>
+const display = document.getElementById("display");
+const modeBtn = document.getElementById("modeBtn");
+
+/* CALCULATOR FUNCTIONS */
+function append(val){ display.value += val; }
+function clearDisplay(){ display.value = ""; }
+function deleteOne(){ display.value = display.value.slice(0,-1); }
+function calculate(){
+  try{ display.value = eval(display.value); }
+  catch{ display.value = "Error"; }
+}
+
+/* LIGHT/DARK MODE */
+modeBtn.onclick = () => {
+  if(document.body.classList.contains("dark")){
+    document.body.classList.replace("dark","light");
+    modeBtn.textContent = "🌙";
+  }else{
+    document.body.classList.replace("light","dark");
+    modeBtn.textContent = "🌞";
+  }
+};
+
+/* Ripple Effect */
+document.querySelectorAll('.buttons button').forEach(button=>{
+  button.addEventListener('click',e=>{
+    const ripple = document.createElement('span');
+    ripple.className='ripple';
+    button.appendChild(ripple);
+    const rect = button.getBoundingClientRect();
+    ripple.style.left = (e.clientX - rect.left)+'px';
+    ripple.style.top = (e.clientY - rect.top)+'px';
+    setTimeout(()=>{ ripple.remove(); },500);
+  });
+});
+</script>
+
 </body>
 </html>
