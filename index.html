@@ -45,10 +45,10 @@
 
 <script>
 const display = document.getElementById("display");
-const modeBtn = document.querySelector(".mode-btn");
 const body = document.body;
+const modeBtn = document.querySelector(".mode-btn");
 
-// Append value
+// Append number/operator
 function append(value) {
     display.value += value;
 }
@@ -76,9 +76,15 @@ function toggleSign() {
 
 // Toggle Light/Dark Mode
 function toggleMode() {
-    body.classList.toggle("light");
-    body.classList.toggle("dark");
-    modeBtn.textContent = body.classList.contains("light") ? "🌙" : "🌞";
+    if(body.classList.contains("dark")){
+        body.classList.remove("dark");
+        body.classList.add("light");
+        modeBtn.textContent = "🌙";
+    } else {
+        body.classList.remove("light");
+        body.classList.add("dark");
+        modeBtn.textContent = "🌞";
+    }
 }
 
 // Ripple Effect
