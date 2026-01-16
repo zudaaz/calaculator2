@@ -1,4 +1,4 @@
-/* Reset & Base */
+/* Base */
 body {
     margin: 0;
     padding: 0;
@@ -10,7 +10,7 @@ body {
     transition: 0.3s;
 }
 
-/* Dark Mode Default */
+/* Dark Mode */
 body.dark {
     background-color: #000;
     color: #fff;
@@ -26,7 +26,7 @@ body.light {
     position: relative;
 }
 
-/* Mode Button */
+/* Mode Toggle Button */
 .mode-btn {
     position: absolute;
     top: -50px;
@@ -38,6 +38,7 @@ body.light {
     cursor: pointer;
     font-weight: bold;
     transition: 0.2s;
+    background: linear-gradient(145deg, #ffd700, #ffb700);
 }
 
 /* Calculator */
@@ -56,6 +57,7 @@ body.light {
     border: none;
     margin-bottom: 20px;
     box-sizing: border-box;
+    transition: 0.3s;
 }
 
 /* Buttons Grid */
@@ -65,7 +67,7 @@ body.light {
     gap: 15px;
 }
 
-/* Button Styles */
+/* Button base */
 .buttons button {
     position: relative;
     height: 70px;
@@ -82,7 +84,6 @@ body.dark .buttons button:not(.operator):not(.special):not(.zero) {
     background-color: #333;
     color: white;
 }
-
 body.light .buttons button:not(.operator):not(.special):not(.zero) {
     background-color: #d4d4d4;
     color: black;
