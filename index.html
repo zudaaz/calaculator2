@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cal.css">
+    <title>Calculator</title>
+</head>
+
+<body>
+
+    <div class="main">
+    <div class=" mode">
+        <button  class="mode1" onclick="mode()">🌞 </button>
+    </div>
+        <div class="main2">
+            <div class="input">
+                <input type="text" style="text-align: right; font-size: 30px;" readonly>
+            </div>
+            <div class="btn">
+                <button class="btns "  onclick="apend('7')">7</button>
+                <button class="btns"  onclick="apend('8')">8</button>
+                <button class="btns"  onclick="apend('9')">9</button>
+                <button class="btns btn2"  onclick="apend('/')">/</button>
+
+                <button class="btns"  onclick="apend('4')">4</button>
+                <button class="btns " onclick="apend('5')">5</button>
+                <button class="btns "  onclick="apend('6')">6</button>
+                <button class="btns btn2"  onclick="apend('*')">*</button>
+
+                <button class="btns" onclick="apend('1')">1</button>
+                <button class="btns"  onclick="apend('2')"> 2</button>
+                <button class="btns"  onclick="apend('3')">3</button>
+                <button class="btns  btn2"  onclick="apend('-')">-</button>
+
+                <button  style="background-color: gray;" class="btns btn3"  onclick="apend('0')">0 </button s>
+                <button class="btns  "  onclick="apend('.')">.</button>
+                <button class="btns btn2 "  onclick="apend('+')">+</button>
+                <button class="btns btn3 " onclick="delate()">Ac</button>
+                <button style="background-color: black;" class="btns btn2 " onclick="Del()">Del</button>
+                <button style="background-color: blue;"  class="btns btn2  " onclick="calculate()">=</button>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+       const input=document.querySelector("input")  
+        const buttons=document.querySelectorAll("button")
+        // const mode=document.querySelector('.mode')
+        const buttonMode=document.querySelector('.mode1')
+
+        function apend(Number){
+            input.value+=Number;
+        }
+        function calculate(){
+          try{
+              input.value=eval(input.value)
+          } catch{
+            input.value="error"
+          }
+        }
+function Del() {
+  input.value = input.value.slice(0, -1);
+}
+
+         function delate(){
+            input.value=""
+         }
+         const style=document.querySelector(".main2")
+         function mode(){
+        document.body.classList.toggle("dark");
+        style.classList.toggle("dark")
+        if(document.body.classList=="dark"){
+            buttonMode.innerHTML="🌙"
+        }else{
+            buttonMode.innerHTML="🌞"
+        }
+
+        
+         }
+
+
+
+
+    
+
+  
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

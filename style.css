@@ -1,0 +1,88 @@
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: rgb(188, 186, 186); */
+
+
+}
+.main2{
+    background-color: white;
+    padding: 50px;
+    max-width: 500px;
+    border-radius: 10px;
+     box-shadow: 0px 0px 20px rgba(red, rgb(17, 138, 17), blue, alpha);
+     height: 530px;
+
+}
+.btn{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    gap: 1.2rem;
+    margin-top: 30px;
+   
+
+}
+.btns{
+    background-color: rgb(200, 197, 197);
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+.btns:hover{
+    background-color: rgb(161, 164, 166);
+}
+input{
+    width: 85%;
+    background-color: rgb(233, 232, 232);
+    padding: 25px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    
+    
+    
+}
+.btn .btn2{ 
+    display: grid;
+    grid-template-columns: 1;
+    background-color: blue;
+    font-size: 30px;
+    color: white;
+     font-weight: bold;
+    
+}
+
+.btn .btn3{
+    background-color: red;
+    font-weight: bold;
+     font-size: 30px;
+      grid-column: span 2;
+}
+.btn3{
+    grid-column: span 1;
+}
+ .btn4{
+       grid-column: span 2px; 
+}
+
+
+.dark{
+    background-color: rgb(9, 8, 8);
+}
+.mode{
+    position: absolute;
+    right: 60px;
+    top:115px;
+  
+    width: 20px;
+}
+.mode button{
+  padding: 2px 5px 2px 5px;
+  border-radius: 5px;
+  background: red;
+}
