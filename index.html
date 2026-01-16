@@ -16,7 +16,7 @@
 
     <div class="buttons">
         <button class="special" onclick="clearDisplay()">C</button>
-        <button class="special" onclick="toggleSign()">±</button>
+        <button class="special" onclick=deleteOne"()">Del</button>
         <button class="special" onclick="append('%')">%</button>
         <button class="operator" onclick="append('/')">÷</button>
 
@@ -70,7 +70,11 @@ modeBtn.onclick = function(){
     modeBtn.textContent = "🌞";
   }
 };
+    function deleteOne() {
+  display.value = display.value.slice(0, -1);
+}
 </script>
 
 </body>
 </html>
+
