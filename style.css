@@ -1,174 +1,105 @@
-/* Base */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    transition: 0.3s;
+*{
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Dark Mode */
-body.dark {
-    background-color: #000;
-    color: #fff;
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition:0.3s;
 }
 
-/* Light Mode */
-body.light {
-    background-color: #f5f5f5;
-    color: #000;
+/* DARK MODE */
+body.dark{
+  background:#000;
+  color:#fff;
 }
 
-.container {
-    position: relative;
+/* LIGHT MODE */
+body.light{
+  background:#f2f2f2;
+  color:#000;
 }
 
-/* Mode Toggle Button */
-.mode-btn {
-    position: absolute;
-    top: -50px;
-    right: 0;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
-    background: linear-gradient(145deg, #ffd700, #ffb700);
+/* MODE BUTTON */
+.mode-btn{
+  position:absolute;
+  top:20px;
+  right:20px;
+  padding:8px 14px;
+  border:none;
+  border-radius:10px;
+  font-size:20px;
+  cursor:pointer;
 }
 
-/* Calculator */
-.calculator {
-    width: 320px;
+/* CALCULATOR */
+.calculator{
+  width:320px;
 }
 
-/* Display */
-#display {
-    width: 100%;
-    height: 100px;
-    font-size: 3rem;
-    text-align: right;
-    padding: 20px;
-    border-radius: 20px;
-    border: none;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-    transition: 0.3s;
+#display{
+  width:100%;
+  height:100px;
+  font-size:3rem;
+  text-align:right;
+  border:none;
+  padding:20px;
+  border-radius:20px;
 }
 
-/* Buttons Grid */
-.buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+/* DISPLAY COLORS */
+body.dark #display{
+  background:#000;
+  color:#fff;
+}
+body.light #display{
+  background:#e6e6e6;
+  color:#000;
 }
 
-/* Button base */
-.buttons button {
-    position: relative;
-    height: 70px;
-    border-radius: 50%;
-    border: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    overflow: hidden;
-    transition: 0.1s;
+.buttons{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-top:20px;
 }
 
-/* Number Buttons */
-body.dark .buttons button:not(.operator):not(.special):not(.zero) {
-    background-color: #333;
-    color: white;
-}
-body.light .buttons button:not(.operator):not(.special):not(.zero) {
-    background-color: #d4d4d4;
-    color: black;
+button{
+  height:70px;
+  border:none;
+  border-radius:50%;
+  font-size:1.6rem;
+  cursor:pointer;
 }
 
-/* Operators */
-body.dark .operator {
-    background-color: #ff9500;
-    color: white;
+/* NUMBERS */
+body.dark button{
+  background:#333;
+  color:#fff;
 }
-body.light .operator {
-    background-color: #ff9500;
-    color: white;
-}
-
-/* Special Buttons */
-body.dark .special {
-    background-color: #a5a5a5;
-    color: black;
-}
-body.light .special {
-    background-color: #e0e0e0;
-    color: black;
+body.light button{
+  background:#d0d0d0;
+  color:#000;
 }
 
-/* Zero Button */
-body.dark .zero {
-    background-color: #333;
-    color: white;
-    grid-column: span 2;
-    border-radius: 35px;
-}
-body.light .zero {
-    background-color: #d4d4d4;
-    color: black;
-    grid-column: span 2;
-    border-radius: 35px;
+/* OPERATORS */
+.operator{
+  background:#ff9500 !important;
+  color:#fff !important;
 }
 
-/* Display Background */
-body.dark #display {
-    background-color: #000;
-    color: #fff;
-}
-body.light #display {
-    background-color: #eee;
-    color: #000;
+/* SPECIAL */
+.special{
+  background:#a5a5a5 !important;
+  color:#000 !important;
 }
 
-/* Ripple Effect */
-.ripple {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background: rgba(255,255,255,0.5);
-    display: block;
-    border-radius: 50%;
-    transform: scale(0);
-    animation: ripple-animation 0.5s linear;
-    pointer-events: none;
-}
-
-@keyframes ripple-animation {
-    to {
-        transform: scale(4);
-        opacity: 0;
-    }
-}
-
-/* Responsive */
-@media (max-width: 400px) {
-    #display {
-        font-size: 2rem;
-        height: 80px;
-        padding: 15px;
-    }
-
-    .buttons button {
-        height: 60px;
-        font-size: 1.5rem;
-    }
-
-    .mode-btn {
-        top: -45px;
-        padding: 8px 15px;
-        font-size: 1rem;
-    }
+/* ZERO */
+.zero{
+  grid-column:span 2;
+  border-radius:35px;
 }
