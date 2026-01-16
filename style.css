@@ -1,20 +1,32 @@
-/* Base */
+/* Reset & Base */
 body {
     margin: 0;
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: #000;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    transition: 0.3s;
+}
+
+/* Dark Mode Default */
+body.dark {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Light Mode */
+body.light {
+    background-color: #f5f5f5;
+    color: #000;
 }
 
 .container {
     position: relative;
 }
 
-/* Mode Toggle */
+/* Mode Button */
 .mode-btn {
     position: absolute;
     top: -50px;
@@ -23,14 +35,9 @@ body {
     font-size: 1.2rem;
     border: none;
     border-radius: 12px;
-    background: linear-gradient(145deg, #ffd700, #ffb700);
     cursor: pointer;
-    color: #000;
     font-weight: bold;
-}
-
-.mode-btn:hover {
-    transform: translateY(-2px);
+    transition: 0.2s;
 }
 
 /* Calculator */
@@ -42,14 +49,13 @@ body {
 #display {
     width: 100%;
     height: 100px;
-    background: #000;
-    color: #fff;
     font-size: 3rem;
     text-align: right;
     padding: 20px;
-    border: none;
     border-radius: 20px;
+    border: none;
     margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
 /* Buttons Grid */
@@ -59,7 +65,7 @@ body {
     gap: 15px;
 }
 
-/* Buttons Style */
+/* Button Styles */
 .buttons button {
     position: relative;
     height: 70px;
@@ -68,34 +74,65 @@ body {
     font-size: 1.8rem;
     cursor: pointer;
     overflow: hidden;
-    color: white;
-    background-color: #333;
+    transition: 0.1s;
 }
 
 /* Number Buttons */
-.buttons button:not(.operator):not(.special):not(.zero) {
+body.dark .buttons button:not(.operator):not(.special):not(.zero) {
     background-color: #333;
+    color: white;
 }
 
-/* Operators */
-.operator {
-    background-color: #ff9500;
-}
-
-/* Special buttons */
-.special {
-    background-color: #a5a5a5;
+body.light .buttons button:not(.operator):not(.special):not(.zero) {
+    background-color: #d4d4d4;
     color: black;
 }
 
-/* Zero button */
-.zero {
-    grid-column: span 2;
-    border-radius: 35px;
-    background-color: #333;
+/* Operators */
+body.dark .operator {
+    background-color: #ff9500;
+    color: white;
+}
+body.light .operator {
+    background-color: #ff9500;
+    color: white;
 }
 
-/* Active Ripple Effect */
+/* Special Buttons */
+body.dark .special {
+    background-color: #a5a5a5;
+    color: black;
+}
+body.light .special {
+    background-color: #e0e0e0;
+    color: black;
+}
+
+/* Zero Button */
+body.dark .zero {
+    background-color: #333;
+    color: white;
+    grid-column: span 2;
+    border-radius: 35px;
+}
+body.light .zero {
+    background-color: #d4d4d4;
+    color: black;
+    grid-column: span 2;
+    border-radius: 35px;
+}
+
+/* Display Background */
+body.dark #display {
+    background-color: #000;
+    color: #fff;
+}
+body.light #display {
+    background-color: #eee;
+    color: #000;
+}
+
+/* Ripple Effect */
 .ripple {
     position: absolute;
     width: 100px;
@@ -115,34 +152,22 @@ body {
     }
 }
 
-/* Light Mode */
-.container.light body,
-.container.light #display {
-    background-color: #f5f5f5;
-    color: black;
-}
+/* Responsive */
+@media (max-width: 400px) {
+    #display {
+        font-size: 2rem;
+        height: 80px;
+        padding: 15px;
+    }
 
-.container.light .calculator #display {
-    background-color: #eee;
-    color: black;
-}
+    .buttons button {
+        height: 60px;
+        font-size: 1.5rem;
+    }
 
-.container.light .buttons button:not(.operator):not(.special):not(.zero) {
-    background-color: #d4d4d4;
-    color: black;
-}
-
-.container.light .zero {
-    background-color: #d4d4d4;
-    color: black;
-}
-
-.container.light .special {
-    background-color: #e0e0e0;
-    color: black;
-}
-
-.container.light .operator {
-    background-color: #ff9500;
-    color: white;
+    .mode-btn {
+        top: -45px;
+        padding: 8px 15px;
+        font-size: 1rem;
+    }
 }
