@@ -16,7 +16,7 @@
 
     <div class="buttons">
         <button class="special" onclick="clearDisplay()">C</button>
-        <button class="special" onclick="deleteOn()">Del</button>
+      <button class="special" onclick="deleteOne()">Del</button>
         <button class="special" onclick="append('%')">%</button>
         <button class="operator" onclick="append('/')">÷</button>
 
@@ -58,6 +58,9 @@ function toggleSign(){
   }
 }
 
+    function deleteOne() {
+  display.value = display.value.slice(0, -1);
+}
 // ✅ LIGHT / DARK MODE — SI HUBAN
 modeBtn.onclick = function(){
   if(document.body.classList.contains("dark")){
@@ -69,14 +72,13 @@ modeBtn.onclick = function(){
     document.body.classList.add("dark");
     modeBtn.textContent = "🌞";
   }
-};
-    function deleteOne() {
-  display.value = display.value.slice(0, -1);
 }
+
 </script>
 
 </body>
 </html>
+
 
 
 
